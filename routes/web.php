@@ -14,7 +14,7 @@ Route::view('/reset-password/{token}', 'auth.reset-password')->name('password.re
 
 // Authentication Actions
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 Route::post('/login', [AuthController::class, 'saveLogin'])->name('login');
 Route::post('/register', [AuthController::class, 'register'])->name('login');
@@ -22,4 +22,8 @@ Route::post('/register', [AuthController::class, 'register'])->name('login');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/forgot-password', [AuthController::class, 'sendResetLink'])->name('password.email');
 Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
+Route::get('/inventory', [DashboardController::class, 'inventory'])->name('dashboard.inventory');
+Route::get('/product', [DashboardController::class, 'product'])->name('product.product');
+Route::post('/inventory', [DashboardController::class, 'saveInventory'])->name('inventory.save');
+
 

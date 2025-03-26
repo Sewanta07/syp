@@ -1,39 +1,8 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="main.css">
-    <script defer src="main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js for graphs -->
-</head>
-<body>
-    <div class="sidebar">
-        <div class="logo-container">
-            <a href="main.html">
-                <img src="logo/Logo.png" alt="Global Store Logo" class="logo">
-            </a>
-            <h2>Inventory Management System</h2>
-        </div>
-        <h2>MENU</h2>
-        <ul>
-            <li><a href="main.html">Dashboard</a></li>
-            <li><a href="profile.html">Profile</a></li>
-            <li><a href="inventory.html">Inventory</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="Aboutus.html">About Me</a></li>
-            <li><a href="#" onclick="logout()">Logout</a></li>
-        </ul>
-    </div>
-
-    <div class="main-content">
-        <h1>DASHBOARD</h1>
-    
-        <!-- Overview Section -->
-        <div class="overview">
+  
+  @extends('layout.index')<!-- Overview Section -->
+  @section('content')
+  <h1>Dashboard</h1>
+  <div class="overview">
             <div class="overview-card">
                 <h3>Total Items</h3>
                 <p id="total-items">Loading...</p>
@@ -64,7 +33,4 @@
                 <canvas id="category-chart"></canvas>
             </div>
         </div>
-    </div>
-    
-</body>
-</html>
+        @endsection()
