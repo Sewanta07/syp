@@ -17,12 +17,11 @@ class AuthController extends Controller
 
     //
     public function saveLogin(Request $request)
-    {
+    {                                                   
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required|string|min:8'
         ]);
-    
         if (Auth::attempt($credentials)) {
             return redirect()->route('dashboard'); // Return your success view
         }

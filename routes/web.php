@@ -17,7 +17,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 Route::post('/login', [AuthController::class, 'saveLogin'])->name('login');
-Route::post('/login', [AuthController::class, 'register'])->name('login');
+Route::post('/register', [AuthController::class, 'register'])->name('login');
 
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/forgot-password', [AuthController::class, 'sendResetLink'])->name('password.email');
