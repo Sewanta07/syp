@@ -111,6 +111,18 @@ class DashboardController extends Controller
     
         return redirect()->route('dashboard.inventory')->with('success', 'Inventory item updated successfully.');
     }
+    public function showInventory($id){
+        // dd('hit');
+        $active_menu = 'inventory';
+        $inventory = Inventory::find($id);
+        return view('product.show',compact('active_menu','inventory'));
+    }
+    public function delete($id){
+        $active_menu = 'inventory';
+        $inventory = Inventory::find($id);
+        $inventory->delete();
+        return redirect()->route('dashboard.inventory')->with('success', 'Inventory item deleted successfully.');
+    }
     
 }
 

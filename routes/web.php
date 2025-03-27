@@ -28,6 +28,8 @@ Route::get('/product', [DashboardController::class, 'product'])->name('dashboard
 Route::post('/inventory', [DashboardController::class, 'saveInventory'])->name('inventory.save');
 Route::get('/inventory/edit/{id}', [DashboardController::class, 'editInventory'])->name('dashboard.edit-inventory');
 Route::post('/inventory/update/{id}', [DashboardController::class, 'updateInventory'])->name('dashboard.update-inventory');
+Route::get('/inventory-show/{id}', [DashboardController::class, 'showInventory'])->name('dashboard.view-inventory');
+Route::delete('/inventory-delete/{id}', [DashboardController::class, 'delete'])->name('dashboard.delete-inventory');
 
 Route::get('/profile', [DashboardController::class, 'profile'])->name('profile.profile');
 

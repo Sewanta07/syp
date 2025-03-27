@@ -25,10 +25,10 @@
     
 </body>
 
-<script src="{{ asset('js/product.js') }}"></script>
+<!-- <script src="{{ asset('js/product.js') }}"></script>
 <script src="{{ asset('js/inventory.js') }}"></script>
 <script src="{{ asset('js/aboutus.js') }}"></script>
-<script src="{{ asset('js/profile.js') }}"></script>
+<script src="{{ asset('js/profile.js') }}"></script> -->
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

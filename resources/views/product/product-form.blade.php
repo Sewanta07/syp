@@ -16,8 +16,6 @@
                         @error('item_category')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
-
-                        Stock Entry Date
                         <!-- <input type="date" name="stock_entry_date" id="stock-entry-date" value="{{ old('stock_entry_date') }}" required>
                         @error('stock_entry_date')
                             <div class="text-danger">{{ $message }}</div>

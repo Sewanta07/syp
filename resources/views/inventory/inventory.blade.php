@@ -39,9 +39,16 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="#" class="delete-btn" data-id="{{ $item->id }}">Delete</button>
-                                    <a href="{{route('dashboard.edit-inventory',$item->id)}}" class="btn btn-secondary">Edit</button>
-                                </td>
+                                <div class="d-flex gap-2">
+                                    <a href="{{ route('dashboard.view-inventory', $item->id) }}" class="btn btn-info btn-sm mt-1" style="margin-bottom:10px;">Show</a>
+                                    <a href="{{ route('dashboard.edit-inventory', $item->id) }}" class="btn btn-warning btn-sm mt-1" style="margin-bottom:10px;">Edit</a>
+                                    <form action="{{ route('dashboard.delete-inventory', $item->id) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?')">Delete</button>
+                                    </form>  
+                            </div>
+</td>
                             </tr>
                         @endforeach
                     </tbody>
