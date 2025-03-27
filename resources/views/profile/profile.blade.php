@@ -1,32 +1,45 @@
-@extends('layout.index')<!-- Overview Section -->
+@extends('layout.index')
+
 @section('content')
 <h1 class="fade-in">PROFILE</h1>
 
-    <div class="profile-container slide-in">
-        <!-- User Details Section (Left) -->
-        <div class="user-details-section">
-            <h2>IMS USER INFORMATION</h2>
-            <div class="user-details">
-                <p><strong>Name:</strong> <span id="user-name"></span></p>
-                <p><strong>Email:</strong> <span id="user-email"></span></p>
-                <p><strong>Role:</strong> <span id="user-role"></span></p>
-                <p><strong>Phone:</strong> 
-                    <input type="text" id="user-phone" placeholder="Add Phone" class="editable">
-                </p>
-                <p><strong>Address:</strong> 
-                    <input type="text" id="user-address" placeholder="Add Address" class="editable">
-                </p>
-                <button id="save-profile" class="btn">Save Changes</button>
-            </div>
-        </div>
+<div class= "slide-in">
+<!-- <h2>IMS USER INFORMATION</h2> -->
+    <!-- User Details Section (Left) -->
+    <!-- <div class="user-details-sectionx"> -->
+        
+        <form action="{{ route('user.update', $user->id) }}" class="profile-container" method="POST" enctype="multipart/form-data">
+            @csrf
+            <!-- @method('PUT') -->
 
-        <!-- Profile Photo Section (Right) -->
-        <div class="profile-photo-section">
-            <label for="profile-pic-upload">
-                <img id="user-photo" src="Images/default-user.png" alt="User Photo" class="profile-animate">
-            </label>
-            <input type="file" id="profile-pic-upload" accept="image/*" style="display: none;">
-        </div>
+            <div class="user-details">
+                <p><strong>Name:</strong> {{ $user->name }}</p>
+                <p><strong>Email:</strong> {{ $user->email }}</p>
+                <p><strong>Role:</strong> Admin </p>
+
+                <p><strong>Phone:</strong> 
+                    <input type="text" name="phone" id="user-phone" value="{{ old('phone', $user->phone) }}" placeholder="Add Phone" class="form-control">
+                </p>
+
+                <p><strong>Address:</strong> 
+                    <input type="text" name="address" id="user-address" value="{{ old('address', $user->address) }}" placeholder="Add Address" class="form-control">
+                </p>
+
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </div>
+            <div class="profile-photo-section">
+        <label for="profile-pic-upload">
+            <img id="user-photo" src="{{ $user->image ? asset('storage/' . $user->image) : asset('Images/default-user.png') }}" 
+                 alt="User Photo" class="profile-animate">
+        </label>
+        @if(!$user->image)
+        <input type="file" name="profile_photo" id="profile-pic-upload" accept="image/*" class="d-none">
+        @endif     
+        </form>
+   
     </div>
+
+    <!-- Profile Photo Section (Right) -->
+
 </div>
-@endsection()
+@endsection

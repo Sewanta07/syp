@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Inventory;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
     public function index()
     {
         $active_menu = 'dashboard';
-        return view('dashboard.index',compact('active_menu'));
+        // $inventory = Inventory::all()->count();
+        $inventory = '50';
+        $user = User::all()->count();
+        return view('dashboard.index',compact('active_menu','inventory','user'));
     }
 
     public function inventory()
@@ -59,18 +63,13 @@ class DashboardController extends Controller
     
 
 
-    public function profile()
-    {
-        $active_menu = 'profile';
-        $inventories = profile::all();
-        return view('profile.profile',compact('active_menu','profile'));
-    }
+   
 
     public function aboutus()
     {
         $active_menu = 'aboutus';
-        $inventories = aboutus::all();
-        return view('aboutus.aboutus',compact('active_menu','aboutus'));
+        // $inventories = aboutus::all();
+        return view('aboutus.aboutus',compact('active_menu'));
     }
     public function editInventory($id){
         $active_menu = 'inventory';

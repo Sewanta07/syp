@@ -5,32 +5,27 @@
   <div class="overview">
             <div class="overview-card">
                 <h3>Total Items</h3>
-                <p id="total-items">Loading...</p>
+                <p id="total-items">{{$inventory}}</p>
             </div>
             <div class="overview-card">
                 <h3>Low Stock</h3>
-                <p id="low-stock">Loading...</p>
+                <p id="low-stock">20</p>
             </div>
             <div class="overview-card">
                 <h3>Out of Stock</h3>
-                <p id="out-of-stock">Loading...</p>
+                <p id="out-of-stock">30</p>
             </div>
             <div class="overview-card">
-                <h3>Recent Sales</h3>
-                <p id="recent-sales">Loading...</p>
+                <h3>Users</h3>
+                <p id="recent-sales">{{$user}}</p>
             </div>
         </div>
     
         <!-- Download Button -->
-        <button id="download-data" class="btn">Download Dashboard Data</button>
+        <!-- <button id="download-data" class="btn">Download Dashboard Data</button> -->
     
         <!-- Stock Graphs -->
         <div class="charts-container">
-            <div class="chart-box">
-                <canvas id="stock-chart"></canvas>
-            </div>
-            <div class="chart-box">
-                <canvas id="category-chart"></canvas>
-            </div>
+        <image src="https://img.freepik.com/free-vector/store-staff-check-number-products-that-must-be-delivered-customers-day_1150-51079.jpg"/>
         </div>
         @endsection()

@@ -22,6 +22,7 @@ Route::post('/register', [AuthController::class, 'register'])->name('login');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/forgot-password', [AuthController::class, 'sendResetLink'])->name('password.email');
 Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
+Route::post('/profile-update', [AuthController::class, 'update'])->name('user.update');
 
 Route::get('/inventory', [DashboardController::class, 'inventory'])->name('dashboard.inventory');
 Route::get('/product', [DashboardController::class, 'product'])->name('dashboard.product');
@@ -31,6 +32,7 @@ Route::post('/inventory/update/{id}', [DashboardController::class, 'updateInvent
 Route::get('/inventory-show/{id}', [DashboardController::class, 'showInventory'])->name('dashboard.view-inventory');
 Route::delete('/inventory-delete/{id}', [DashboardController::class, 'delete'])->name('dashboard.delete-inventory');
 
-Route::get('/profile', [DashboardController::class, 'profile'])->name('profile.profile');
+Route::get('/profile', [AuthController::class, 'profile'])->name('profile.profile');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/aboutus', [DashboardController::class, 'aboutus'])->name('aboutus.aboutus');

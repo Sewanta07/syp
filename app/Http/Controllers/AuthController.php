@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 
 class AuthController extends Controller
@@ -47,4 +48,47 @@ class AuthController extends Controller
         return redirect()->route('dashboard');
 
     }
+    public function profile()
+    {
+        $active_menu = 'profile';
+        $user = Auth::user();
+        return view('profile.profile',compact('active_menu','user'));
+    }
+    
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+    
+        // Validate the request data
+        $request->validate([
+            'phone' => 'nullable|string|max:15',
+            'address' => 'nullable|string|max:255',
+            'profile_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+    
+        // Update user details
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+    // dd($request->all());
+        // Handle profile photo upload
+        if ($request->hasFile('profile_photo')) {
+            // Delete old photo if it exists
+            if ($user->image) {
+                Storage::delete('public/' . $user->image);
+            }
+    
+            // Store new image
+            $path = $request->file('profile_photo')->store('profile_photos', 'public');
+            $user->image = $path;
+        }
+    
+        $user->save();
+    
+        return redirect()->route('profile.profile')->with('success', 'Profile updated successfully!');
+    }
+    public function logout()
+{
+    Auth::logout(); // Log out the user
+    return redirect('/'); // Redirect to home or login page
+}
 }
