@@ -1,6 +1,6 @@
 /* Inventory Page Layout */
 .inventory-container {
-    display: flex;
+    /* display: flex; */
     gap: 30px;
     justify-content: space-between;
     align-items: flex-start;
@@ -9,7 +9,7 @@
 
 /* Unified Inventory Section */
 .inventory-section {
-    width: 65%;
+    /* width: 65%; */
     background: white;
     padding: 25px;
     border-radius: 15px;

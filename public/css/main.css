@@ -115,3 +115,7 @@
 ul .active {
     background-color: #1F3B3855;
 }
+#pagination-links{
+    display: flex;
+    justify-content: end;
+}
